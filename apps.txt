@@ -7,7 +7,7 @@ vscode
 notepadplusplus.install
 7zip.install
 vlc
-git.
+git
 google-drive-file-stream
 openssh
 winrar
