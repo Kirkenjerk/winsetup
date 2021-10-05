@@ -4,7 +4,7 @@ if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]:
     exit;
 }
 
-# Sets execution policy to bypass in order to run scripts.
+# Sets execution policy to bypass in order to run scripts and installs Chocolatey.
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 
 # Assigns txt file with list of apps to a variable, then runs a command against each app in the txt file.
