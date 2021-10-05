@@ -1,0 +1,20 @@
+steam
+googlechrome
+discord
+python3
+firefox
+vscode
+notepadplusplus.install
+7zip.install
+vlc
+git.
+google-drive-file-stream
+openssh
+winrar
+sysinternals
+curl
+choco install nvidia-display-driver
+php
+winscp
+microsoft-windows-terminal
+bitwarden
