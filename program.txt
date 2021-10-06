@@ -6,3 +6,7 @@ Microsoft.WindowsMaps
 Microsoft.MicrosoftSolitaireCollection
 Microsoft.MicrosoftOfficeHub
 Microsoft.Todos
+Microsoft.GetHelp
+Microsoft.WindowsFeedbackHub
+Microsoft.People
+Microsoft.YourPhone
