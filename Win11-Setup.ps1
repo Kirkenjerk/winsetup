@@ -7,10 +7,22 @@ if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]:
 # Sets execution policy to bypass in order to run scripts and installs Chocolatey.
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 
-# Assigns txt file with list of apps to a variable, then runs a command against each app in the txt file.
+# Configures software for computer
 $applist = Get-Content -Path .\apps.txt
+$programlist = Get-Content -Path .\program.txt
 
+
+# Installs applications from app.txt
 foreach ($app in $applist) {
-    choco install $app -y -f
+    choco install $app -y
 }
+
+# Debloat Windows 11 by removing preinstalled applications
+foreach ($program in $programlist) {
+    Get-AppxPackage $program | Remove-AppxPackage
+}
+
+# Installs Linux Subsystem for Windows
+wsl --install
+
 

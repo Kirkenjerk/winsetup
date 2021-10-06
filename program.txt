@@ -1,0 +1,9 @@
+Microsoft.BingNews
+Microsoft.BingWeather
+Microsoft.ScreenSketch
+Microsoft.Getstarted
+Microsoft.WindowsMaps
+Microsoft.MicrosoftSolitaireCollection
+Microsoft.MicrosoftOfficeHub
+Microsoft.Todos
+Microsoft.MicrosoftEdge
