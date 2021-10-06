@@ -6,4 +6,3 @@ Microsoft.WindowsMaps
 Microsoft.MicrosoftSolitaireCollection
 Microsoft.MicrosoftOfficeHub
 Microsoft.Todos
-Microsoft.MicrosoftEdge
