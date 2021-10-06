@@ -348,9 +348,7 @@ Function Remove3dObjects {
         Remove-Item $Objects64 -Recurse 
     }
 }
-    
-
-functions install-wsl {
+function install-wsl {
     # Enables and installs Ubuntu Linux Subsystem for Windows
     dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
     dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart

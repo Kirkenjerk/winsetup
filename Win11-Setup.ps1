@@ -16,7 +16,8 @@ if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]:
 }
 
 # Creates log directory if not already present
-
+Write-Output "Log files are stored at 'C:\Temp\Win-11-Setup'"
+Start-Sleep 3
 $LogFolder = "C:\Temp\Windows-11-Setup"
 If (Test-Path $LogFolder) {
     Write-Output "$LogFolder exists. Skipping."
@@ -40,7 +41,7 @@ if (Test-Path -Path $chocofolder){
 }
 else {
     "Choco is not installed, will be installed now..."
-    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 }
 
 ##################################
