@@ -13,7 +13,6 @@ openssh
 winrar
 sysinternals
 curl
-choco install nvidia-display-driver
 php
 winscp
 microsoft-windows-terminal

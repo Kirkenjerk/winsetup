@@ -1,4 +1,10 @@
 #########################
+# Import custom functions
+#########################
+
+Import-Module .\functions.ps1
+
+#########################
 #Setup Script environment
 #########################
 
@@ -24,20 +30,24 @@ Else {
 
 Start-Transcript -OutputDirectory "$LogFolder"
 
+#################################################################################
+# Checks if Chocolatey is installed and if not installs it.
+#################################################################################
+$chocofolder = "C:\ProgramData\chocolatey"
 
-##################################
-# Sets execution policy to bypass in order to run scripts and installs Chocolatey.
-##################################
-Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
-
+if (Test-Path -Path $chocofolder){
+    "Path Exists, no need to install chocolatey"
+}
+else {
+    "Choco is not installed, will be installed now..."
+    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+}
 
 ##################################
 # Configures software for computer
 ##################################
 $applist = Get-Content -Path .\apps.txt
 $programlist = Get-Content -Path .\program.txt
-$tweaks = @()
-$PSCommandArgs = @()
 
 # Installs applications from app.txt
 foreach ($app in $applist) {
@@ -49,26 +59,17 @@ foreach ($program in $programlist) {
     Get-AppxPackage $program | Remove-AppxPackage
 }
 
-# Enables and installs Ubuntu Linux Subsystem for Windows
-dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
-dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
-wsl --set-default-version 2
+#################################################
+# Configure various settings via custom functions
+#################################################
 
-# You can change which linux distro you wish to install by changing the distro name below. It is currently set to Ubuntu.
-Write-Output "If the WSL install fails, then install the msi from this link: https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi"
-Start-Sleep 10
-wsl --install -d Ubuntu
-
-
-############################
-# Configure various settings
-############################
-
-# Protect Privacy Settings
-.\functions.ps1
 Protect-Privacy
 DisableCortana
 Stop-EdgePDF
 UninstallOneDrive
 Remove3dObjects
 
+#################################
+# Installs Ubuntu Linux Subsystem
+#################################
+install-wsl
