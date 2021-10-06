@@ -34,7 +34,7 @@ Start-Transcript -OutputDirectory "$LogFolder"
 #################################################################################
 # Checks if Chocolatey is installed and if not installs it.
 #################################################################################
-$chocofolder = "C:\ProgramData\chocolatey"
+$chocofolder = "C:\ProgramData\chocolatey\choco.exe"
 
 if (Test-Path -Path $chocofolder){
     "Path Exists, no need to install chocolatey"
