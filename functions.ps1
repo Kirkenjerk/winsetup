@@ -1,7 +1,6 @@
 ###########################
 #Configure Privacy Settings
 ###########################
-
 Function Protect-Privacy {
             
     #Disables Windows Feedback Experience
@@ -143,11 +142,9 @@ Function Protect-Privacy {
     }
 }
 
-
 #################
 # Disable Cortana
 #################
-
 Function DisableCortana {
     Write-Host "Disabling Cortana"
     $Cortana1 = "HKCU:\SOFTWARE\Microsoft\Personalization\Settings"
@@ -246,7 +243,6 @@ Function UninstallOneDrive {
 
     Write-Host "Uninstalling OneDrive. Please wait..."
     
-
     New-PSDrive  HKCR -PSProvider Registry -Root HKEY_CLASSES_ROOT
     $onedrive = "$env:SYSTEMROOT\SysWOW64\OneDriveSetup.exe"
     $ExplorerReg1 = "HKCR:\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}"
@@ -331,11 +327,9 @@ Function UninstallOneDrive {
     }
 }
 
-
 ###################
 # Remove 3D Objects
 ###################
-
 Function Remove3dObjects {
     #Removes 3D Objects from the 'My Computer' submenu in explorer
     Write-Host "Removing 3D Objects from explorer 'My Computer' submenu"
@@ -348,6 +342,10 @@ Function Remove3dObjects {
         Remove-Item $Objects64 -Recurse 
     }
 }
+
+#################################
+#Installs Linux Subsystem feature
+#################################
 function install-wsl {
     # Enables and installs Ubuntu Linux Subsystem for Windows
     dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
