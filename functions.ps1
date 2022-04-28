@@ -259,6 +259,7 @@ Start-Process "explorer.exe"
 
 Write-Output "Waiting for explorer to complete loading"
 Start-Sleep 10
+}
 
 ###################
 # Remove 3D Objects
